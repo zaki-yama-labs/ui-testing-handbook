@@ -25,7 +25,7 @@ const LoadingTask = () => (
 );
 
 type Props = {
-  loading: boolean;
+  loading?: boolean;
   tasks: TaskType[];
   onArchiveTask: (checked: boolean, id: string) => void;
   onTogglePinTask: (state: TaskState, id: string) => void;

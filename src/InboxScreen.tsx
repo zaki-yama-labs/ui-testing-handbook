@@ -5,8 +5,9 @@ import { Icon } from "@chakra-ui/react";
 import { TaskList } from "./components/TaskList";
 import { EmptyState } from "./components/EmptyState";
 import { useTasks } from "./useTasks";
+import { TaskState } from "./components/Task";
 
-const FrownIcon = (props) => (
+const FrownIcon = (props: any) => (
   <Icon
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -29,15 +30,15 @@ type Props = {
 export const InboxScreen = ({ error }: Props) => {
   const [tasks, dispatch] = useTasks();
 
-  const archiveTask = (archive, id) => {
+  const archiveTask = (archive: boolean, id: string) => {
     dispatch({ type: archive ? "ARCHIVE_TASK" : "INBOX_TASK", id });
   };
 
-  const togglePinTask = (state, id) => {
+  const togglePinTask = (state: TaskState, id: string) => {
     dispatch({ type: state === "TASK_PINNED" ? "INBOX_TASK" : "PIN_TASK", id });
   };
 
-  const editTitle = (title, id) => {
+  const editTitle = (title: string, id: string) => {
     dispatch({ type: "EDIT_TITLE", id, title });
   };
 
