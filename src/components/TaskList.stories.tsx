@@ -1,4 +1,6 @@
 import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+
 import { TaskList } from "./TaskList";
 import Task from "./Task.stories";
 
@@ -8,9 +10,11 @@ export default {
   argTypes: {
     ...Task.argTypes,
   },
-};
+} as ComponentMeta<typeof TaskList>;
 
-const Template = (args) => <TaskList {...args} />;
+const Template: ComponentStory<typeof TaskList> = (args) => (
+  <TaskList {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

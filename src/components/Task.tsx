@@ -30,7 +30,7 @@ export const Task = ({
       bgGradient: "linear(to-b,  brand.100,  brand.50)",
     }}
     aria-label={title}
-    tabIndex="0"
+    tabIndex={0}
     {...props}
   >
     <Checkbox

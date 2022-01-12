@@ -1,4 +1,6 @@
 import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+
 import { Task } from "./Task";
 
 export default {
@@ -9,9 +11,9 @@ export default {
     onTogglePinTask: { action: "onTogglePinTask" },
     onEditTitle: { action: "onEditTitle" },
   },
-};
+} as ComponentMeta<typeof Task>;
 
-const Template = (args) => <Task {...args} />;
+const Template: ComponentStory<typeof Task> = (args) => <Task {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
