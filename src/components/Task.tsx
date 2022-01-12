@@ -1,5 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
 import {
   Checkbox,
   Flex,
@@ -10,13 +8,27 @@ import {
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 
+export type TaskState = "TASK_INBOX" | "TASK_ARCHIVED" | "TASK_PINNED";
+export type TaskType = {
+  id: string;
+  title: string;
+  state: TaskState;
+};
+
+export type Props = {
+  task: TaskType;
+  onArchiveTask: (checked: boolean, id: string) => void;
+  onTogglePinTask: (state: TaskState, id: string) => void;
+  onEditTitle: (newTitle: string, id: string) => void;
+};
+
 export const Task = ({
   task: { id, title, state },
   onArchiveTask,
   onTogglePinTask,
   onEditTitle,
   ...props
-}) => (
+}: Props) => (
   <Flex
     as="li"
     _notLast={{
@@ -63,14 +75,3 @@ export const Task = ({
     />
   </Flex>
 );
-
-Task.propTypes = {
-  task: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-  }),
-  onArchiveTask: PropTypes.func.isRequired,
-  onTogglePinTask: PropTypes.func.isRequired,
-  onEditTitle: PropTypes.func.isRequired,
-};

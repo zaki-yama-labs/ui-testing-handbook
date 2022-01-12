@@ -1,8 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
 import { VStack, Skeleton, Flex, Spacer } from "@chakra-ui/react";
 import { CheckIcon, StarIcon } from "@chakra-ui/icons";
-import { Task } from "./Task";
+import { Task, TaskState, TaskType } from "./Task";
 import { EmptyState } from "./EmptyState";
 
 const LoadingTask = () => (
@@ -26,13 +24,21 @@ const LoadingTask = () => (
   </Flex>
 );
 
+type Props = {
+  loading: boolean;
+  tasks: TaskType[];
+  onArchiveTask: (checked: boolean, id: string) => void;
+  onTogglePinTask: (state: TaskState, id: string) => void;
+  onEditTitle: (newTitle: string, id: string) => void;
+};
+
 export function TaskList({
-  loading,
+  loading = false,
   tasks,
   onTogglePinTask,
   onArchiveTask,
   onEditTitle,
-}) {
+}: Props) {
   const events = {
     onTogglePinTask,
     onArchiveTask,
@@ -73,15 +79,3 @@ export function TaskList({
     </VStack>
   );
 }
-
-TaskList.propTypes = {
-  loading: PropTypes.bool,
-  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
-  onTogglePinTask: PropTypes.func.isRequired,
-  onArchiveTask: PropTypes.func.isRequired,
-  onEditTitle: PropTypes.func.isRequired,
-};
-
-TaskList.defaultProps = {
-  loading: false,
-};

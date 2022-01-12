@@ -22,7 +22,11 @@ const FrownIcon = (props) => (
   </Icon>
 );
 
-export const InboxScreen = ({ error }) => {
+type Props = {
+  error: string;
+};
+
+export const InboxScreen = ({ error }: Props) => {
   const [tasks, dispatch] = useTasks();
 
   const archiveTask = (archive, id) => {
