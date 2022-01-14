@@ -11,6 +11,13 @@ export default {
     onTogglePinTask: { action: "onTogglePinTask" },
     onEditTitle: { action: "onEditTitle" },
   },
+  parameters: {
+    a11y: {
+      config: {
+        rules: [{ id: "listitem", enabled: false }],
+      },
+    },
+  },
 } as ComponentMeta<typeof Task>;
 
 const Template: ComponentStory<typeof Task> = (args) => <Task {...args} />;
