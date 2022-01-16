@@ -30,6 +30,7 @@ type Props = {
   onArchiveTask: (checked: boolean, id: string) => void;
   onTogglePinTask: (state: TaskState, id: string) => void;
   onEditTitle: (newTitle: string, id: string) => void;
+  onDeleteTask: (id: string) => void;
 };
 
 export function TaskList({
@@ -38,11 +39,13 @@ export function TaskList({
   onTogglePinTask,
   onArchiveTask,
   onEditTitle,
+  onDeleteTask,
 }: Props) {
   const events = {
     onTogglePinTask,
     onArchiveTask,
     onEditTitle,
+    onDeleteTask,
   };
 
   if (loading) {
