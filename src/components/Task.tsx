@@ -6,7 +6,7 @@ import {
   Box,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
+import { DeleteIcon, StarIcon } from "@chakra-ui/icons";
 
 export type TaskState = "TASK_INBOX" | "TASK_ARCHIVED" | "TASK_PINNED";
 export type TaskType = {
@@ -20,6 +20,7 @@ export type Props = {
   onArchiveTask: (checked: boolean, id: string) => void;
   onTogglePinTask: (state: TaskState, id: string) => void;
   onEditTitle: (newTitle: string, id: string) => void;
+  onDeleteTask: (id: string) => void;
 };
 
 export const Task = ({
@@ -27,6 +28,7 @@ export const Task = ({
   onArchiveTask,
   onTogglePinTask,
   onEditTitle,
+  onDeleteTask,
   ...props
 }: Props) => (
   <Flex
@@ -65,6 +67,16 @@ export const Task = ({
         onChange={(e) => onEditTitle(e.target.value, id)}
       />
     </Box>
+    <IconButton
+      p={3}
+      flex="none"
+      aria-label="delete"
+      variant="ghost"
+      color="gray.200"
+      _hover={{ color: "red.300" }}
+      icon={<DeleteIcon />}
+      onClick={() => onDeleteTask(id)}
+    />
     <IconButton
       p={5}
       flex="none"

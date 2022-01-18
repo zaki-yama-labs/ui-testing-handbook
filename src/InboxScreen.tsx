@@ -34,6 +34,10 @@ export const InboxScreen = ({ error }: Props) => {
     dispatch({ type: archive ? "ARCHIVE_TASK" : "INBOX_TASK", id });
   };
 
+  const deleteTask = (id: string) => {
+    dispatch({ type: "DELETE_TASK", id });
+  };
+
   const togglePinTask = (state: TaskState, id: string) => {
     dispatch({ type: state === "TASK_PINNED" ? "INBOX_TASK" : "PIN_TASK", id });
   };
@@ -71,6 +75,7 @@ export const InboxScreen = ({ error }: Props) => {
         onArchiveTask={archiveTask}
         onTogglePinTask={togglePinTask}
         onEditTitle={editTitle}
+        onDeleteTask={deleteTask}
       />
     </Box>
   );
